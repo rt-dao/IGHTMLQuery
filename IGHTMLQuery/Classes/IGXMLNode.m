@@ -268,17 +268,26 @@ static void recursively_remove_namespaces_from_node(xmlNodePtr node)
         return [IGXMLNodeSet emptyNodeSet];
     }
     
+    return [[IGXMLNodeSet alloc] initWithNodes:[self allChildren]];
+}
+
+- (NSArray*)allChildren {
+    if (!_node) {
+        return [NSArray array];
+    }
+    
     NSMutableArray* children = [NSMutableArray array];
     xmlNodePtr cur = _node->children;
     
     while (cur != nil) {
-        if (cur->type == XML_ELEMENT_NODE) {
+        if (cur->type == XML_ELEMENT_NODE ||
+            cur->type == XML_TEXT_NODE) {
             [children addObject:[IGXMLNode nodeWithXMLNode:cur]];
         }
         cur = cur->next;
     }
     
-    return [[IGXMLNodeSet alloc] initWithNodes:children];
+    return [children copy];
 }
 
 -(IGXMLNode*) firstChild {

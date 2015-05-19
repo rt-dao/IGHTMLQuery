@@ -35,6 +35,11 @@
 - (IGXMLNodeSet*) children;
 
 /**
+ @return get children elements of current node as {{NSArray}}.
+ */
+- (NSArray*) allChildren;
+
+/**
  @return get first child element of current node. If no child exists, return nil.
  */
 - (IGXMLNode*) firstChild;
