@@ -17,7 +17,7 @@ DESC
 
   s.author       = { "Francis Chong" => "francis@ignition.hk" }
 
-  s.source       = { :git => "https://github.com/rt-syscom/IGHTMLQuery.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/rt-syscom/IGHTMLQuery.git" }
 
   s.library   = 'xml2'
 
